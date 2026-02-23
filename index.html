@@ -3,113 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform</title>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Centered Resource Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        html, body { height: 100%; margin: 0; }
-        body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; background: #fbfdff; }
-        .custom-embed-scope { width: 100%; max-width: 1200px; box-sizing: border-box; padding: 40px 16px; text-align: center; }
-        .custom-embed-scope .cards-flex-container { justify-content: center; }
- .custom-embed-scope{ --brand-primary: #007bff; --brand-soft: #eef6ff; --text-main: #1a1a1a; --text-light: #64748b; --transition-soft: all 0.4s cubic-bezier(0.23,1,0.32,1); font-family: 'Plus Jakarta Sans', sans-serif; padding: 40px 10px; background: #fdfdfd; } .custom-embed-scope .section-header { text-align:center; margin-bottom:40px; } .custom-embed-scope .section-header h2 { font-weight:800; font-size:2rem; color:var(--text-main); margin:0; } /* Navigation */ .custom-embed-scope .nav-pills{ display:flex; justify-content:center; gap:40px; margin-bottom:40px; list-style:none; padding:0; } .custom-embed-scope .nav-item-container{ display:flex; flex-direction:column; align-items:center; cursor:pointer; width:160px; } .custom-embed-scope .icon-box{ background:#fff; border:1px solid #eee; border-radius:50%; width:80px; height:80px; display:flex; align-items:center; justify-content:center; transition:var(--transition-soft); margin-bottom:12px; } .custom-embed-scope .icon-box svg{ width:32px; height:32px; stroke:var(--text-light); fill:none; stroke-width:2; } /* Active state */ .custom-embed-scope .nav-item-container.active .icon-box{ background:var(--brand-primary); border-color:var(--brand-primary); box-shadow:0 10px 20px rgba(0,123,255,0.2); transform:translateY(-5px); } .custom-embed-scope .nav-item-container.active .icon-box svg{ stroke:#fff; } .custom-embed-scope .nav-item-container.active .tab-label-link{ color:var(--brand-primary); } .custom-embed-scope .tab-label-link{ font-weight:700; font-size:0.95rem; color:var(--text-light); transition:var(--transition-soft); } /* Cards */ .custom-embed-scope .cards-flex-container{ display:flex; flex-wrap:wrap; justify-content:center; gap:20px; max-width:1200px; margin:0 auto; } .custom-embed-scope .article-card{ background:#fff; border:1px solid #f0f0f0; border-radius:16px; overflow:hidden; display:none; /* JS controls visibility */ flex-direction:column; width:280px; transition:var(--transition-soft); } .custom-embed-scope .article-card:hover{ transform:translateY(-8px); box-shadow:0 15px 30px rgba(0,0,0,0.07); } .custom-embed-scope .img-container{ height:160px; background:#eee; } .custom-embed-scope .img-container img{ width:100%; height:100%; object-fit:cover; } .custom-embed-scope .card-body{ padding:20px; flex-grow:1; } .custom-embed-scope .card-title{ font-weight:700; font-size:1rem; color:var(--text-main); margin-bottom:8px; } .custom-embed-scope .card-text{ font-size:0.85rem; color:var(--text-light); line-height:1.4; } .custom-embed-scope .read-more-btn{ display:block; margin:0 20px 20px; padding:10px; text-align:center; background:var(--brand-soft); color:var(--brand-primary); text-decoration:none; border-radius:10px; font-weight:700; font-size:0.85rem; transition:0.3s; } .custom-embed-scope .read-more-btn:hover{ background:var(--brand-primary); color:#fff; } .custom-embed-scope .load-more-container{ text-align:center; margin-top:30px; } .custom-embed-scope .btn-load-more{ padding:10px 30px; border-radius:30px; border:2px solid var(--brand-primary); background:#fff; color:var(--brand-primary); font-weight:700; cursor:pointer; } /* Responsive */ @media (max-width:600px){ .custom-embed-scope .nav-pills{ gap:20px; } .custom-embed-scope .article-card{ width:100%; } }
+        /* Global Reset */
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            background: #fbfdff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
+        /* Scope Container - The centering anchor */
+        .custom-embed-scope { 
+            width: 100%; 
+            max-width: 1200px; 
+            box-sizing: border-box; 
+            padding: 60px 20px; 
+            text-align: center; 
+            --brand-primary: #007bff; 
+            --brand-soft: #eef6ff; 
+            --text-main: #1a1a1a; 
+            --text-light: #64748b;
+        }
+
+        .section-header h2 { 
+            font-weight: 800; 
+            font-size: 2.2rem; 
+            margin-bottom: 40px; 
+            color: var(--text-main); 
+        }
+
+        /* Navigation Fix: Flex-center with auto widths */
+        .custom-embed-scope .nav-pills { 
+            display: flex; 
+            justify-content: center; 
+            gap: 40px; 
+            margin-bottom: 50px; 
+            list-style: none; 
+            padding: 0; 
+        }
+
+        .custom-embed-scope .nav-item-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            cursor: pointer; 
+            width: auto; /* Removed 160px fix */
+            min-width: 120px;
+            transition: all 0.3s ease;
+        }
+
+        .custom-embed-scope .icon-box { 
+            background: #fff; 
+            border: 1px solid #eee; 
+            border-radius: 50%; 
+            width: 80px; 
+            height: 80px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 12px; 
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+        }
+
+        .custom-embed-scope .icon-box svg { width: 32px; height: 32px; stroke: var(--text-light); fill: none; stroke-width: 2; }
+
+        /* Active State */
+        .custom-embed-scope .nav-item-container.active .icon-box { 
+            background: var(--brand-primary); 
+            border-color: var(--brand-primary); 
+            box-shadow: 0 10px 20px rgba(0,123,255,0.2); 
+            transform: translateY(-5px); 
+        }
+        .custom-embed-scope .nav-item-container.active .icon-box svg { stroke: #fff; }
+        .custom-embed-scope .nav-item-container.active .tab-label-link { color: var(--brand-primary); font-weight: 800; }
+        .custom-embed-scope .tab-label-link { font-weight: 600; font-size: 0.95rem; color: var(--text-light); }
+
+        /* Content Panes and Card Grid Fix */
+        .custom-embed-scope .cards-flex-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; /* This centers the cards */
+            gap: 24px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .custom-embed-scope .article-card { 
+            background: #fff; 
+            border: 1px solid #f0f0f0; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            display: none; /* Controlled by JS */
+            flex-direction: column; 
+            width: 280px; 
+            text-align: left; /* Keep text natural inside centered card */
+            transition: all 0.4s ease;
+        }
+
+        .custom-embed-scope .article-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+
+        .custom-embed-scope .img-container { height: 170px; background: #f0f0f0; }
+        .custom-embed-scope .img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .custom-embed-scope .card-body { padding: 24px; flex-grow: 1; }
+        .custom-embed-scope .card-title { font-weight: 700; font-size: 1.1rem; color: var(--text-main); margin: 0 0 10px 0; }
+        .custom-embed-scope .card-text { font-size: 0.9rem; color: var(--text-light); line-height: 1.5; margin: 0; }
+
+        .custom-embed-scope .read-more-btn { 
+            display: block; margin: 0 24px 24px; padding: 12px; text-align: center; 
+            background: var(--brand-soft); color: var(--brand-primary); 
+            text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 0.9rem; transition: 0.3s; 
+        }
+        .custom-embed-scope .read-more-btn:hover { background: var(--brand-primary); color: #fff; }
+
+        .custom-embed-scope .load-more-container { margin-top: 40px; }
+        .custom-embed-scope .btn-load-more { 
+            padding: 12px 40px; border-radius: 30px; border: 2px solid var(--brand-primary); 
+            background: #fff; color: var(--brand-primary); font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .custom-embed-scope .btn-load-more:hover { background: var(--brand-primary); color: #fff; }
+
+        @media (max-width: 600px) {
+            .custom-embed-scope .nav-pills { gap: 15px; }
+            .custom-embed-scope .article-card { width: 100%; }
+            .custom-embed-scope .nav-item-container { min-width: 80px; }
+            .custom-embed-scope .icon-box { width: 60px; height: 60px; }
+        }
     </style>
 </head>
 <body>
+
     <div class="custom-embed-scope">
+        <div class="section-header">
+            <h2>Expert Resource Library</h2>
+        </div>
 
+        <div class="nav-pills">
+            <div class="nav-item-container active" data-target="pane-hardware">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <span class="tab-label-link">Hardware</span>
+            </div>
+            <div class="nav-item-container" data-target="pane-eco">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                </div>
+                <span class="tab-label-link">Ecosystems</span>
+            </div>
+        </div>
 
-    <div class="section-header">
-        <h2>Expert Resource Library</h2>
-    </div>
+        <div id="pane-hardware" class="tab-pane-custom">
+            <div class="cards-flex-container">
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=1"></div><div class="card-body"><h5 class="card-title">Compute Units</h5><p class="card-text">Analyzing raw processing capabilities.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=2"></div><div class="card-body"><h5 class="card-title">Memory Allocation</h5><p class="card-text">Optimizing RAM for high-load tasks.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=3"></div><div class="card-body"><h5 class="card-title">Sensor Tuning</h5><p class="card-text">Improving haptic response times.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=4"></div><div class="card-body"><h5 class="card-title">Display Metrics</h5><p class="card-text">Calibration for color accuracy.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=5"></div><div class="card-body"><h5 class="card-title">Thermal Dissipation</h5><p class="card-text">New liquid cooling standards.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=6"></div><div class="card-body"><h5 class="card-title">Durability Tests</h5><p class="card-text">Hardware stress testing results.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+            </div>
+            <div class="load-more-container"><button class="btn-load-more">Explore More</button></div>
+        </div>
 
-    <div class="nav-pills">
-        <div class="nav-item-container active" data-target="pane-hardware">
-            <div class="icon-box">
-                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            </div>
-            <span class="tab-label-link">Hardware</span>
-        </div>
+        <div id="pane-eco" class="tab-pane-custom" style="display:none;">
+            <div class="cards-flex-container">
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=7"></div><div class="card-body"><h5 class="card-title">Cloud Latency</h5><p class="card-text">Reducing sync delay across devices.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+                <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=8"></div><div class="card-body"><h5 class="card-title">Privacy Layers</h5><p class="card-text">E2E encryption within ecosystems.</p></div><a href="#" class="read-more-btn">Read More</a></div>
+            </div>
+            <div class="load-more-container"><button class="btn-load-more">Explore More</button></div>
+        </div>
+    </div>
 
-        <div class="nav-item-container" data-target="pane-eco">
-            <div class="icon-box">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-            </div>
-            <span class="tab-label-link">Platform & Ecosystems</span>
-        </div>
-    </div>
+    <script>
+        (function() {
+            const scope = document.querySelector('.custom-embed-scope');
+            
+            function showInitialCards(pane) {
+                const cards = pane.querySelectorAll('.article-card');
+                cards.forEach((c, idx) => {
+                    // Set display to 'flex' for the first 4 to maintain alignment
+                    c.style.display = idx < 4 ? 'flex' : 'none';
+                });
+                const loadMoreBtn = pane.querySelector('.load-more-container');
+                if(loadMoreBtn) loadMoreBtn.style.display = cards.length > 4 ? 'block' : 'none';
+            }
 
-    <div id="pane-hardware" class="tab-pane-custom">
-        <div class="cards-flex-container">
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=1"></div><div class="card-body"><h5 class="card-title">Compute Units</h5><p class="card-text">Analyzing raw processing capabilities.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=2"></div><div class="card-body"><h5 class="card-title">Memory Allocation</h5><p class="card-text">Optimizing RAM for high-load tasks.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=3"></div><div class="card-body"><h5 class="card-title">Sensor Tuning</h5><p class="card-text">Improving haptic response times.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=4"></div><div class="card-body"><h5 class="card-title">Display Metrics</h5><p class="card-text">Calibration for color accuracy.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=5"></div><div class="card-body"><h5 class="card-title">Thermal Dissipation</h5><p class="card-text">New liquid cooling standards.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=6"></div><div class="card-body"><h5 class="card-title">Durability Tests</h5><p class="card-text">Hardware stress testing results.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-        </div>
-        <div class="load-more-container"><button class="btn-load-more">Load More</button></div>
-    </div>
+            // Init default
+            showInitialCards(scope.querySelector('#pane-hardware'));
 
-    <div id="pane-eco" class="tab-pane-custom" style="display:none;">
-        <div class="cards-flex-container">
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=7"></div><div class="card-body"><h5 class="card-title">Cloud Latency</h5><p class="card-text">Reducing sync delay across devices.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=8"></div><div class="card-body"><h5 class="card-title">Privacy Layers</h5><p class="card-text">E2E encryption within ecosystems.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=9"></div><div class="card-body"><h5 class="card-title">API Connectivity</h5><p class="card-text">Bridge building between platforms.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-            <div class="article-card"><div class="img-container"><img src="https://picsum.photos/400/250?sig=10"></div><div class="card-body"><h5 class="card-title">App Sandbox</h5><p class="card-text">Third party security protocols.</p></div><a href="#" class="read-more-btn">Read More</a></div>
-        </div>
-        <div class="load-more-container"><button class="btn-load-more">Load More</button></div>
-    </div>
+            // Tab Switching
+            scope.querySelectorAll('.nav-item-container').forEach(nav => {
+                nav.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    scope.querySelectorAll('.nav-item-container').forEach(n => n.classList.remove('active'));
+                    this.classList.add('active');
 
-    <script>
-        (function() {
-            const scope = document.querySelector('.custom-embed-scope');
-            
-            function showInitialCards(pane) {
-                const cards = pane.querySelectorAll('.article-card');
-                cards.forEach((c, idx) => {
-                    c.style.display = idx < 4 ? 'flex' : 'none';
-                });
-                const loadMoreBtn = pane.querySelector('.load-more-container');
-                if(loadMoreBtn) loadMoreBtn.style.display = cards.length > 4 ? 'block' : 'none';
-            }
+                    scope.querySelectorAll('.tab-pane-custom').forEach(p => p.style.display = 'none');
+                    const activePane = scope.querySelector('#' + targetId);
+                    activePane.style.display = 'block';
+                    showInitialCards(activePane);
+                });
+            });
 
-            // Init default
-            showInitialCards(scope.querySelector('#pane-hardware'));
+            // Load More Logic
+            scope.querySelectorAll('.btn-load-more').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pane = this.closest('.tab-pane-custom');
+                    const hiddenCards = Array.from(pane.querySelectorAll('.article-card')).filter(c => c.style.display === 'none');
+                    
+                    hiddenCards.slice(0, 4).forEach(c => c.style.display = 'flex');
 
-            // Tab Switch Logic
-            scope.querySelectorAll('.nav-item-container').forEach(nav => {
-                nav.addEventListener('click', function() {
-                    const targetId = this.getAttribute('data-target');
-                    
-                    // Nav UI
-                    scope.querySelectorAll('.nav-item-container').forEach(n => n.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Pane UI
-                    scope.querySelectorAll('.tab-pane-custom').forEach(p => p.style.display = 'none');
-                    const activePane = scope.querySelector('#' + targetId);
-                    activePane.style.display = 'block';
-
-                    showInitialCards(activePane);
-                });
-            });
-
-            // Load More Logic
-            scope.querySelectorAll('.btn-load-more').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const pane = this.closest('.tab-pane-custom');
-                    const hiddenCards = Array.from(pane.querySelectorAll('.article-card')).filter(c => c.style.display === 'none');
-                    
-                    hiddenCards.slice(0, 4).forEach(c => c.style.display = 'flex');
-
-                    if (pane.querySelectorAll('.article-card[style="display: none;"]').length === 0) {
-                        this.parentElement.style.display = 'none';
-                    }
-                });
-            });
-        })();
-    </script>
-</div>
+                    // If no more hidden cards, hide the button
+                    if (pane.querySelectorAll('.article-card[style="display: none;"]').length === 0) {
+                        this.parentElement.style.display = 'none';
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
-
 </html>
